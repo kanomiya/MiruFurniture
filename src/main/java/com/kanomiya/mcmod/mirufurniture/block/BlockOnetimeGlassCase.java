@@ -226,7 +226,7 @@ public class BlockOnetimeGlassCase extends BlockContainer {
 	{
 		int meta = 0;
 
-		meta = (meta | ((EnumFacing) state.getValue(FACING)).getIndex()) << 1;
+		meta = (meta | ((EnumFacing) state.getValue(FACING)).getHorizontalIndex()) << 1;
 		if ((Boolean) state.getValue(BROKEN)) meta = (meta | 1);
 
 		return meta;

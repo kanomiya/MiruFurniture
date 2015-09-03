@@ -33,7 +33,7 @@ public class TileEntityOnetimeGlassCaseRenderer extends IExtendedTileEntitySpeci
 	@Override public void renderTileEntityAt(TileEntity te, double posX, double posY, double posZ, float rot_rot, int p_180535_9_) {
 		if (te instanceof TileEntityOnetimeGlassCase) {
 			TileEntityOnetimeGlassCase tileCase = (TileEntityOnetimeGlassCase) te;
-			int rotateMeta = (te.getBlockMetadata() >> 5);
+			int rotateMeta = (te.getBlockMetadata() >> 1) & 3;
 
 
 			GlStateManager.pushMatrix(); // 座標保存
@@ -41,7 +41,6 @@ public class TileEntityOnetimeGlassCaseRenderer extends IExtendedTileEntitySpeci
 			GlStateManager.translate((float)posX +0.5f, (float)posY, (float)posZ +0.5f);
 			if (rotateFlag) GlStateManager.rotate(metaToRotate(rotateMeta) *90f, 0f, 1f, 0f);
 
-			GlStateManager.pushMatrix();
 			GlStateManager.disableLighting();
 
 			if (tileCase.getDisplayedItem() != null) {
@@ -93,10 +92,8 @@ public class TileEntityOnetimeGlassCaseRenderer extends IExtendedTileEntitySpeci
 				}
 			}
 			GlStateManager.enableLighting();
-			GlStateManager.popMatrix();
 
-
-			GlStateManager.scale(0.0625f, 0.0625f, 0.0625f);
+			// GlStateManager.scale(0.0625f, 0.0625f, 0.0625f);
 
 			// bindTexture(resource);
 			// model.renderModel(1f, ((te.getBlockMetadata() & 16) == 16));

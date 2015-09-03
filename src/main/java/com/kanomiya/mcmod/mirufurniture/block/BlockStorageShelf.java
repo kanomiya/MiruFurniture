@@ -34,8 +34,7 @@ public class BlockStorageShelf extends BlockContainer {
 
 	}
 
-	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ) {
+	@Override public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (world.isRemote) { return false; }
 
 		player.openGui(MiruFurniture.instance, MiruFurniture.GUIID_STORAGESHELF, world, pos.getX(), pos.getY(), pos.getZ());
@@ -56,13 +55,11 @@ public class BlockStorageShelf extends BlockContainer {
 
 
 
-	@Override
-	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+	@Override public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		return getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
 	}
 
-	@Override
-	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+	@Override public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
 		TileEntity tileentity = worldIn.getTileEntity(pos);
 
 		if (tileentity instanceof IInventory) {
@@ -91,8 +88,7 @@ public class BlockStorageShelf extends BlockContainer {
 
 
 
-	@Override
-	public IBlockState getStateFromMeta(int meta)
+	@Override public IBlockState getStateFromMeta(int meta)
 	{
 		EnumFacing enumfacing = EnumFacing.getFront(meta);
 
@@ -104,35 +100,28 @@ public class BlockStorageShelf extends BlockContainer {
 		return getDefaultState().withProperty(FACING, enumfacing);
 	}
 
-	@Override
-	public int getMetaFromState(IBlockState state)
+	@Override public int getMetaFromState(IBlockState state)
 	{
 		return ((EnumFacing)state.getValue(FACING)).getHorizontalIndex();
 	}
 
 
-	@Override
-	protected BlockState createBlockState()
+	@Override protected BlockState createBlockState()
 	{
 		return new BlockState(this, new IProperty[] {FACING }); //, HAS_BOOK[0], HAS_BOOK[1], HAS_BOOK[2]});
 	}
 
-	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
+	@Override public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityStorageShelf();
 	}
 
-	@Override
-	public boolean isOpaqueCube() { return true; }
+	@Override public boolean isOpaqueCube() { return true; }
 
-	@Override
-	public boolean isFullCube() { return false; }
+	@Override public boolean isFullCube() { return false; }
 
-	@Override
-	public boolean isFullBlock() { return false; }
+	@Override public boolean isFullBlock() { return false; }
 
-	@Override
-	public boolean getUseNeighborBrightness() { return true; }
+	@Override public boolean getUseNeighborBrightness() { return true; }
 
 
 }

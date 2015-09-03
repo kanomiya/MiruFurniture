@@ -1,0 +1,16 @@
+[
+{
+	"modid": "mirufurniture",
+	"name": "Miru Furniture",
+	"description": "Add Furniture",
+	"version": "0.10",
+	"mcversion": "1.8",
+	"url": "http://kanomiya.com/",
+	"updateUrl": "",
+	"authors": ["Kanomiya"],
+	"credits": "Kanomiya",
+	"logoFile": "",
+	"screenshots": [],
+	"dependencies": []
+}
+]

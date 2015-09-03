@@ -1,0 +1,7 @@
+{
+	"parent": "mirufurniture:block/blockGlassCase_cube_broken",
+	"textures": {
+		"base": "mirufurniture:blocks/blockOnetimeGlassCase",
+		"glass": "mirufurniture:blocks/blockOnetimeGlassCase_glass"
+	}
+}

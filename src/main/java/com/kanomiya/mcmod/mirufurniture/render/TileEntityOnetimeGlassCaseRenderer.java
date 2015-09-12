@@ -1,5 +1,6 @@
 package com.kanomiya.mcmod.mirufurniture.render;
 
+import com.kanomiya.mcmod.core.render.IExtendedTileEntitySpecialRenderer;
 import com.kanomiya.mcmod.mirufurniture.MiruFurniture;
 import com.kanomiya.mcmod.mirufurniture.tileentity.TileEntityOnetimeGlassCase;
 

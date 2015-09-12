@@ -1,4 +1,4 @@
-package com.kanomiya.mcmod.mirufurniture.item;
+package com.kanomiya.mcmod.core.item;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;

@@ -1,4 +1,4 @@
-package com.kanomiya.mcmod.mirufurniture.render;
+package com.kanomiya.mcmod.core.render;
 
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.tileentity.TileEntity;

@@ -1,4 +1,4 @@
-package com.kanomiya.mcmod.mirufurniture.tileentity;
+package com.kanomiya.mcmod.core.tileentity;
 
 import net.minecraft.block.BlockChest;
 import net.minecraft.entity.player.EntityPlayer;

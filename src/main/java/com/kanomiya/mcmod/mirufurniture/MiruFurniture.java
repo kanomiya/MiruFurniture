@@ -1,10 +1,15 @@
 package com.kanomiya.mcmod.mirufurniture;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import org.apache.logging.log4j.Logger;
 
@@ -16,10 +21,15 @@ public class MiruFurniture {
 	public static final String VERSION = "0.10";
 
 
-	@Mod.Instance("mirufurniture")
+	@Mod.Instance(MODID)
 	public static MiruFurniture instance;
 
-	public static final MFCreativeTab tabMF = new MFCreativeTab();
+	public static final CreativeTabs tabMF = new CreativeTabs(MODID) {
+		@Override @SideOnly(Side.CLIENT)
+		public Item getTabIconItem() {
+			return Item.getItemFromBlock(MFBlocks.blockOnetimeGlassCase_cube);
+		}
+	};
 
 	public static final int GUIID_STORAGESHELF = 0;
 
@@ -29,19 +39,28 @@ public class MiruFurniture {
 	public void preInit(FMLPreInitializationEvent event) {
 		logger = event.getModLog();
 
-		MFBlocks.init(event.getSide().isClient());
-		MFRecipes.init();
+		MFBlocks.preInit(event);
+		MFRecipes.preInit(event);
+		MFConfig.preInit(event);
 
 		// MinecraftForge.EVENT_BUS.register(this);
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
+		MFBlocks.init(event);
+		MFRecipes.init(event);
+
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
-		MFConfig.init();
 
 	}
 
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event) {
+		MFBlocks.postInit(event);
+		MFRecipes.postInit(event);
+
+	}
 
 }
 

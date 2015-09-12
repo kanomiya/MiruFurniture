@@ -1,5 +1,6 @@
 package com.kanomiya.mcmod.mirufurniture.tileentity;
 
+import com.kanomiya.mcmod.core.tileentity.ITileEntityWithInventory;
 import com.kanomiya.mcmod.mirufurniture.MFConfig;
 
 import net.minecraft.item.ItemStack;

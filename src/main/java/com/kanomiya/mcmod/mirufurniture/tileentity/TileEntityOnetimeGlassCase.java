@@ -1,8 +1,8 @@
 package com.kanomiya.mcmod.mirufurniture.tileentity;
 
-import com.kanomiya.mcmod.core.tileentity.ITileEntityWithInventory;
-
 import net.minecraft.item.ItemStack;
+
+import com.kanomiya.mcmod.core.tileentity.ITileEntityWithInventory;
 
 /**
  * @author Kanomiya
@@ -21,6 +21,7 @@ public class TileEntityOnetimeGlassCase extends ITileEntityWithInventory {
 
 	public ItemStack getDisplayedItem() { return getStackInSlot(0); }
 
+	public boolean hasDisplayedItem() { return (getDisplayedItem() != null); }
 
 
 	/**

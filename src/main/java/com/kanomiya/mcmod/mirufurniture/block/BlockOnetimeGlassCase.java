@@ -2,9 +2,6 @@ package com.kanomiya.mcmod.mirufurniture.block;
 
 import java.util.List;
 
-import com.kanomiya.mcmod.mirufurniture.MiruFurniture;
-import com.kanomiya.mcmod.mirufurniture.tileentity.TileEntityOnetimeGlassCase;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -33,6 +30,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import com.kanomiya.mcmod.mirufurniture.MiruFurniture;
+import com.kanomiya.mcmod.mirufurniture.tileentity.TileEntityOnetimeGlassCase;
+
 /**
  * @author Kanomiya
  *
@@ -60,7 +60,7 @@ public class BlockOnetimeGlassCase extends BlockContainer {
 			boolean successFlag = false;
 			boolean consumedItem = false;
 
-			if (tileCase.getDisplayedItem() == null) {
+			if (! tileCase.hasDisplayedItem()) {
 				ItemStack displayStack = playerIn.getHeldItem().copy();
 				displayStack.stackSize = 1;
 				tileCase.setDisplayedItem(displayStack);

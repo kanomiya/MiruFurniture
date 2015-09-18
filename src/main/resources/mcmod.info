@@ -12,8 +12,10 @@
 	"credits": "",
 	"logoFile": "",
 	"screenshots": [],
+	"parent": "",
 	"requiredMods": [],
 	"dependencies": [],
+	"dependants": [],
 	"useDependencyInformation": "true"
 }
 ]

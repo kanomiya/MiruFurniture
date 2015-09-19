@@ -1,8 +1,5 @@
 package com.kanomiya.mcmod.mirufurniture.block;
 
-import com.kanomiya.mcmod.mirufurniture.MiruFurniture;
-import com.kanomiya.mcmod.mirufurniture.tileentity.TileEntityStorageShelf;
-
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -21,8 +18,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import com.kanomiya.mcmod.mirufurniture.MiruFurniture;
+import com.kanomiya.mcmod.mirufurniture.tileentity.TileEntityStorageShelf;
+
 public class BlockStorageShelf extends BlockContainer {
-	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+	public static final PropertyDirection FACING = PropertyDirection.create(MFBlockConsts.NAME_FACING, EnumFacing.Plane.HORIZONTAL);
 
 	public BlockStorageShelf() {
 		super(Material.wood);
@@ -108,7 +108,7 @@ public class BlockStorageShelf extends BlockContainer {
 
 	@Override protected BlockState createBlockState()
 	{
-		return new BlockState(this, new IProperty[] {FACING }); //, HAS_BOOK[0], HAS_BOOK[1], HAS_BOOK[2]});
+		return new BlockState(this, new IProperty[] { FACING }); //, HAS_BOOK[0], HAS_BOOK[1], HAS_BOOK[2]});
 	}
 
 	@Override public TileEntity createNewTileEntity(World world, int meta) {

@@ -1,9 +1,5 @@
 package com.kanomiya.mcmod.mirufurniture.render;
 
-import com.kanomiya.mcmod.core.render.IExtendedTileEntitySpecialRenderer;
-import com.kanomiya.mcmod.mirufurniture.MiruFurniture;
-import com.kanomiya.mcmod.mirufurniture.tileentity.TileEntityOnetimeGlassCase;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
@@ -18,6 +14,12 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import com.kanomiya.mcmod.core.render.IExtendedTileEntitySpecialRenderer;
+import com.kanomiya.mcmod.mirufurniture.MiruFurniture;
+import com.kanomiya.mcmod.mirufurniture.block.BlockOnetimeGlassCase;
+import com.kanomiya.mcmod.mirufurniture.block.MFBlockConsts;
+import com.kanomiya.mcmod.mirufurniture.tileentity.TileEntityOnetimeGlassCase;
 
 @SideOnly(Side.CLIENT)
 public class TileEntityOnetimeGlassCaseRenderer extends IExtendedTileEntitySpecialRenderer {
@@ -34,8 +36,8 @@ public class TileEntityOnetimeGlassCaseRenderer extends IExtendedTileEntitySpeci
 	@Override public void renderTileEntityAt(TileEntity te, double posX, double posY, double posZ, float rot_rot, int p_180535_9_) {
 		if (te instanceof TileEntityOnetimeGlassCase) {
 			TileEntityOnetimeGlassCase tileCase = (TileEntityOnetimeGlassCase) te;
-			int rotateMeta = (te.getBlockMetadata() >> 1) & 3;
-
+			// int rotateMeta = (te.getBlockMetadata() >> 1) & 3;
+			int rotateMeta = BlockOnetimeGlassCase.BITFIELD.getValue(MFBlockConsts.NAME_FACING, te.getBlockMetadata());
 
 			GlStateManager.pushMatrix(); // 座標保存
 

@@ -30,6 +30,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import com.kanomiya.mcmod.core.util.bit.BitFieldHelper;
+import com.kanomiya.mcmod.core.util.bit.BitFieldStructure;
 import com.kanomiya.mcmod.mirufurniture.MiruFurniture;
 import com.kanomiya.mcmod.mirufurniture.tileentity.TileEntityOnetimeGlassCase;
 
@@ -38,8 +40,22 @@ import com.kanomiya.mcmod.mirufurniture.tileentity.TileEntityOnetimeGlassCase;
  *
  */
 public class BlockOnetimeGlassCase extends BlockContainer {
-	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
-	public static final PropertyBool BROKEN = PropertyBool.create("broken");
+	public static final BitFieldStructure BITFIELD = new BitFieldStructure() {
+		{
+			// BitData
+			// 0b0XXY
+			//
+			// X: 向き(4)
+			// Y: 破損状態(2)
+
+			allocate(MFBlockConsts.NAME_BROKEN, 0, 1); // 0b00Y
+			allocate(MFBlockConsts.NAME_FACING, 2, 2); // 0bXX0
+
+		}
+	};
+
+	public static final PropertyDirection FACING = PropertyDirection.create(MFBlockConsts.NAME_FACING, EnumFacing.Plane.HORIZONTAL);
+	public static final PropertyBool BROKEN = PropertyBool.create(MFBlockConsts.NAME_BROKEN);
 
 
 	public BlockOnetimeGlassCase() {
@@ -197,27 +213,13 @@ public class BlockOnetimeGlassCase extends BlockContainer {
 
 	@Override public IBlockState getStateFromMeta(int meta)
 	{
-		// BitData
-		// 0b0XXY
-		//
-		// X: 向き(4)
-		// Y: 破損状態(2)
-
 		IBlockState state = getDefaultState();
 
-		int facingMeta = (meta >> 1) & 3; // 0b11
+		EnumFacing enumfacing = EnumFacing.getFront(BITFIELD.getValue(MFBlockConsts.NAME_FACING, meta));
 
-		EnumFacing enumfacing = EnumFacing.getFront(facingMeta);
+		if (enumfacing.getAxis() == EnumFacing.Axis.Y) enumfacing = EnumFacing.NORTH;
 
-		if (enumfacing.getAxis() == EnumFacing.Axis.Y)
-		{
-			enumfacing = EnumFacing.NORTH;
-		}
-
-		int brokenMeta = meta & 1;
-
-
-		state = state.withProperty(FACING, enumfacing).withProperty(BROKEN, (brokenMeta == 1));
+		state = state.withProperty(FACING, enumfacing).withProperty(BROKEN, BitFieldHelper.intToBool(BITFIELD.getValue(MFBlockConsts.NAME_BROKEN, meta)));
 
 		return state;
 	}
@@ -226,8 +228,8 @@ public class BlockOnetimeGlassCase extends BlockContainer {
 	{
 		int meta = 0;
 
-		meta = (meta | ((EnumFacing) state.getValue(FACING)).getHorizontalIndex()) << 1;
-		if ((Boolean) state.getValue(BROKEN)) meta = (meta | 1);
+		meta = BITFIELD.setValue(MFBlockConsts.NAME_FACING, meta, ((EnumFacing) state.getValue(FACING)).getHorizontalIndex());
+		meta = BITFIELD.setValue(MFBlockConsts.NAME_BROKEN, meta, ((Boolean) state.getValue(BROKEN)) ? 1 : 0);
 
 		return meta;
 	}

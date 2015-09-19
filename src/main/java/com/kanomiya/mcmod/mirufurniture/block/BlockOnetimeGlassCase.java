@@ -229,7 +229,7 @@ public class BlockOnetimeGlassCase extends BlockContainer {
 		int meta = 0;
 
 		meta = BITFIELD.setValue(MFBlockConsts.NAME_FACING, meta, ((EnumFacing) state.getValue(FACING)).getHorizontalIndex());
-		meta = BITFIELD.setValue(MFBlockConsts.NAME_BROKEN, meta, ((Boolean) state.getValue(BROKEN)) ? 1 : 0);
+		meta = BITFIELD.setValue(MFBlockConsts.NAME_BROKEN, meta, BitFieldHelper.boolToInt((Boolean) state.getValue(BROKEN)));
 
 		return meta;
 	}

@@ -21,4 +21,8 @@ public class BitFieldHelper {
 		return false;
 	}
 
+	public static int boolToInt(boolean flag) {
+		return (flag) ? 1 : 0;
+	}
+
 }

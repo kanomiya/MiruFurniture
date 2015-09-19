@@ -8,6 +8,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemWritableBook;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
+import com.kanomiya.mcmod.kanomiyacore.KanomiyaCore;
+
 /**
  * @author Kanomiya
  *
@@ -16,7 +18,7 @@ public class MFConfig {
 	// public static final Set<String> bookNames = Sets.newConcurrentHashSet();
 
 
-	public static void preInit(FMLPreInitializationEvent event) {
+	public static void preInit(FMLPreInitializationEvent event, KanomiyaCore core) {
 
 	}
 

@@ -15,7 +15,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.kanomiya.mcmod.core.render.IExtendedTileEntitySpecialRenderer;
+import com.kanomiya.mcmod.kanomiyacore.render.IExtendedTileEntitySpecialRenderer;
 import com.kanomiya.mcmod.mirufurniture.MiruFurniture;
 import com.kanomiya.mcmod.mirufurniture.block.BlockOnetimeGlassCase;
 import com.kanomiya.mcmod.mirufurniture.block.MFBlockConsts;

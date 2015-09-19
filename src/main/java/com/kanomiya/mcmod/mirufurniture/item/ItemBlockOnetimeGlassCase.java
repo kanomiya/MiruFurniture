@@ -3,7 +3,7 @@ package com.kanomiya.mcmod.mirufurniture.item;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
-import com.kanomiya.mcmod.core.item.ItemBlockDamaged;
+import com.kanomiya.mcmod.kanomiyacore.item.ItemBlockDamaged;
 
 /**
  * @author Kanomiya

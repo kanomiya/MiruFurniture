@@ -1,14 +1,14 @@
 package com.kanomiya.mcmod.mirufurniture.render;
 
-import com.kanomiya.mcmod.core.render.IExtendedTileEntitySpecialRenderer;
-import com.kanomiya.mcmod.mirufurniture.MiruFurniture;
-import com.kanomiya.mcmod.mirufurniture.tileentity.TileEntityStorageShelf;
-
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import com.kanomiya.mcmod.kanomiyacore.render.IExtendedTileEntitySpecialRenderer;
+import com.kanomiya.mcmod.mirufurniture.MiruFurniture;
+import com.kanomiya.mcmod.mirufurniture.tileentity.TileEntityStorageShelf;
 
 // TileEntityEnchantmentTableRenderer
 @SideOnly(Side.CLIENT)

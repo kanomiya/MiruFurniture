@@ -8,13 +8,15 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+import com.kanomiya.mcmod.kanomiyacore.KanomiyaCore;
+
 /**
  * @author Kanomiya
  *
  */
 public class MFRecipes {
 
-	public static void preInit(FMLPreInitializationEvent event) {
+	public static void preInit(FMLPreInitializationEvent event, KanomiyaCore core) {
 		GameRegistry.addRecipe(new ItemStack(MFBlocks.blockOnetimeGlassCase_cube),
 				"CCC",
 				"C C",
@@ -60,8 +62,8 @@ public class MFRecipes {
 
 	}
 
-	public static void init(FMLInitializationEvent event) {  }
-	public static void postInit(FMLPostInitializationEvent event) {  }
+	public static void init(FMLInitializationEvent event, KanomiyaCore core) {  }
+	public static void postInit(FMLPostInitializationEvent event, KanomiyaCore core) {  }
 
 
 }

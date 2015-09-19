@@ -30,8 +30,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.kanomiya.mcmod.core.util.bit.BitFieldHelper;
-import com.kanomiya.mcmod.core.util.bit.BitFieldStructure;
+import com.kanomiya.mcmod.kanomiyacore.util.bit.BitFieldHelper;
+import com.kanomiya.mcmod.kanomiyacore.util.bit.BitFieldStructure;
 import com.kanomiya.mcmod.mirufurniture.MiruFurniture;
 import com.kanomiya.mcmod.mirufurniture.tileentity.TileEntityOnetimeGlassCase;
 

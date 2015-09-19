@@ -7,7 +7,8 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-import com.kanomiya.mcmod.core.util.GameRegistryUtils;
+import com.kanomiya.mcmod.kanomiyacore.KanomiyaCore;
+import com.kanomiya.mcmod.kanomiyacore.util.GameRegistryUtils;
 import com.kanomiya.mcmod.mirufurniture.block.BlockOnetimeGlassCase;
 import com.kanomiya.mcmod.mirufurniture.block.BlockStorageShelf;
 import com.kanomiya.mcmod.mirufurniture.item.ItemBlockOnetimeGlassCase;
@@ -27,11 +28,13 @@ public class MFBlocks {
 	// public static Block block;
 
 
-	public static void preInit(FMLPreInitializationEvent event) {
+	public static void preInit(FMLPreInitializationEvent event, KanomiyaCore core) {
 		final boolean client = event.getSide().isClient();
 
-		GameRegistryUtils.registerBlock(blockOnetimeGlassCase_cube = new BlockOnetimeGlassCase(), ItemBlockOnetimeGlassCase.class, "blockOnetimeGlassCase_cube", new String[] { "", "broken" }, client);
-		GameRegistryUtils.registerBlock(blockStorageShelf = new BlockStorageShelf(), "blockStorageShelf", client);
+		GameRegistryUtils utils = core.getGameRegistryUtils();
+
+		utils.registerBlock(blockOnetimeGlassCase_cube = new BlockOnetimeGlassCase(), ItemBlockOnetimeGlassCase.class, "blockOnetimeGlassCase_cube", new String[] { "", "broken" }, client);
+		utils.registerBlock(blockStorageShelf = new BlockStorageShelf(), "blockStorageShelf", client);
 		// GameRegistryUtils.registerBlock(block = new Block(), "block", client);
 
 		// TileEntity
@@ -45,8 +48,8 @@ public class MFBlocks {
 		}
 	}
 
-	public static void init(FMLInitializationEvent event) {  }
-	public static void postInit(FMLPostInitializationEvent event) {  }
+	public static void init(FMLInitializationEvent event, KanomiyaCore core) {  }
+	public static void postInit(FMLPostInitializationEvent event, KanomiyaCore core) {  }
 
 
 

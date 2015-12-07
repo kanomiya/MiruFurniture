@@ -78,14 +78,16 @@ public class TileEntityOnetimeGlassCaseRenderer extends IExtendedTileEntitySpeci
 				GlStateManager.translate(0d, 0.4d, 0d);
 				GlStateManager.scale(0.5f, 0.5f, 0.5f);
 
-				if (!itemRenderer.shouldRenderItemIn3D(tileCase.getDisplayedItem()) || item instanceof ItemSkull)
+				// if (!itemRenderer.shouldRenderItemIn3D(tileCase.getDisplayedItem()) || item instanceof ItemSkull)
+				if (!itemRenderer.func_175050_a(tileCase.getDisplayedItem()) || item instanceof ItemSkull)
 				{
 					GlStateManager.rotate(180.0f, 0.0F, 1.0F, 0.0F);
 				}
 
 				GlStateManager.pushAttrib();
 				RenderHelper.enableStandardItemLighting();
-				itemRenderer.renderItemModel(tileCase.getDisplayedItem());
+				// itemRenderer.renderItemModel(tileCase.getDisplayedItem());
+				itemRenderer.func_175043_b(tileCase.getDisplayedItem());
 				RenderHelper.disableStandardItemLighting();
 				GlStateManager.popAttrib();
 

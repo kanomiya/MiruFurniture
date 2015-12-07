@@ -56,7 +56,8 @@ public class BlockStorageShelf extends BlockContainer {
 
 
 	@Override public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-		return getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+		// return getStateFromMeta(meta).withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+		return getStateFromMeta(meta).withProperty(FACING, placer.func_174811_aO().getOpposite());
 	}
 
 	@Override public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {

@@ -84,7 +84,7 @@ public class BlockOnetimeGlassCase extends BlockContainer {
 				consumedItem = (playerIn.inventory.getCurrentItem().stackSize -- <= 0);
 				successFlag = true;
 
-			} else if ((Boolean) state.getValue(BROKEN))  {
+			} else if (state.getValue(BROKEN))  {
 				if (playerIn.getHeldItem().getItem() == Item.getItemFromBlock(Blocks.glass_pane)) {
 
 					NBTTagCompound tag = new NBTTagCompound();
@@ -117,7 +117,7 @@ public class BlockOnetimeGlassCase extends BlockContainer {
 		IBlockState state = worldIn.getBlockState(pos);
 		TileEntity tileEntity = worldIn.getTileEntity(pos);
 
-		EnumFacing facing = (EnumFacing) state.getValue(FACING);
+		EnumFacing facing = state.getValue(FACING);
 		BlockPos pos2 = pos.offset(facing);
 
 
@@ -228,8 +228,8 @@ public class BlockOnetimeGlassCase extends BlockContainer {
 	{
 		int meta = 0;
 
-		meta = BITFIELD.setValue(MFBlockConsts.NAME_FACING, meta, ((EnumFacing) state.getValue(FACING)).getHorizontalIndex());
-		meta = BITFIELD.setValue(MFBlockConsts.NAME_BROKEN, meta, BitFieldHelper.boolToInt((Boolean) state.getValue(BROKEN)));
+		meta = BITFIELD.setValue(MFBlockConsts.NAME_FACING, meta, state.getValue(FACING).getHorizontalIndex());
+		meta = BITFIELD.setValue(MFBlockConsts.NAME_BROKEN, meta, BitFieldHelper.boolToInt(state.getValue(BROKEN)));
 
 		return meta;
 	}
@@ -237,8 +237,7 @@ public class BlockOnetimeGlassCase extends BlockContainer {
 
 
 	@Override public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-		// return getStateFromMeta(meta).withProperty(FACING, placer.getHorizontalFacing().getOpposite());
-		return getStateFromMeta(meta).withProperty(FACING, placer.func_174811_aO().getOpposite());
+		return getStateFromMeta(meta).withProperty(FACING, placer.getHorizontalFacing().getOpposite());
 	}
 
 	@Override protected BlockState createBlockState()

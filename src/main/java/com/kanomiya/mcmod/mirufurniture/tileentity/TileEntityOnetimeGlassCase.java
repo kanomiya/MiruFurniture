@@ -27,7 +27,7 @@ public class TileEntityOnetimeGlassCase extends ITileEntityWithInventory {
 	/**
 	* @inheritDoc
 	*/
-	@Override public String getCommandSenderName() { return "tileEntityOnetimeGlassCase"; }
+	@Override public String getName() { return "tileEntityOnetimeGlassCase"; }
 
 	/**
 	* @inheritDoc

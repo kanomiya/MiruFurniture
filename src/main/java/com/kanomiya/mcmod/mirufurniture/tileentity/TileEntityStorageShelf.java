@@ -33,7 +33,7 @@ public class TileEntityStorageShelf extends ITileEntityWithInventory {
 	// --*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--
 	// --*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--]
 
-	@Override public String getCommandSenderName() { return hasCustomName() ? customName : "container.storageshelf"; }
+	@Override public String getName() { return hasCustomName() ? customName : "container.storageshelf"; }
 
 	@Override public int getSizeInventory() { return 14; }
 	@Override public int getInventoryStackLimit() { return 1; }

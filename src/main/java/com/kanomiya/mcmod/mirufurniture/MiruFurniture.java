@@ -16,7 +16,7 @@ import org.apache.logging.log4j.Logger;
 import com.kanomiya.mcmod.kanomiyacore.KanomiyaCore;
 import com.kanomiya.mcmod.mirufurniture.gui.GuiHandler;
 
-@Mod(modid = MiruFurniture.MODID)
+@Mod(modid = MiruFurniture.MODID, acceptedMinecraftVersions = "[1.8,1.8.8]")
 public class MiruFurniture {
 	public static final String MODID = "mirufurniture";
 

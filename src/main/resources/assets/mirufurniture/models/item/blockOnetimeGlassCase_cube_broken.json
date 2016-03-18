@@ -1,10 +1,25 @@
 {
 	"parent": "mirufurniture:block/blockOnetimeGlassCase_cube_broken",
 	"display": {
-		"thirdperson": {
-				"rotation": [ 10, -45, 170 ],
-				"translation": [ 0, 1, -1.75 ],
-				"scale": [ 0.375, 0.375, 0.375 ]
+		"ground": {
+			"rotation": [ 0, 45, 0 ],
+			"translation": [ 0, 3, 0 ],
+			"scale":[ 0.24, 0.24, 0.24 ]
+		},
+		"thirdperson_righthand": {
+			"rotation": [ 75, 45, 0 ],
+			"translation": [ 0, 3, 0 ],
+			"scale": [ 0.375, 0.375, 0.375 ]
+		},
+		"firstperson_righthand": {
+			"rotation": [ 0, 135, 0 ],
+			"translation": [ 0, 0.5, 0 ],
+			"scale": [ 0.375, 0.375, 0.375 ]
+		},
+		"gui": {
+			"rotation": [ 30, 220, 0 ],
+			"translation": [ 0, 0, 0 ],
+			"scale": [ 0.68, 0.68, 0.68 ]
 		}
 	}
 }

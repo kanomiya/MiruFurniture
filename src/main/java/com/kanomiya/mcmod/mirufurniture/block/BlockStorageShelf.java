@@ -1,19 +1,23 @@
 package com.kanomiya.mcmod.mirufurniture.block;
 
 import net.minecraft.block.BlockContainer;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumWorldBlockLayer;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -29,15 +33,15 @@ public class BlockStorageShelf extends BlockContainer {
 		setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 
 		setHardness(1.5F);
-		setStepSound(soundTypeWood);
+		setStepSound(SoundType.WOOD);
 		setCreativeTab(MiruFurniture.tabMF);
 
 	}
 
-	@Override public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (world.isRemote) { return false; }
+	@Override public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (worldIn.isRemote) { return false; }
 
-		player.openGui(MiruFurniture.instance, MiruFurniture.GUIID_STORAGESHELF, world, pos.getX(), pos.getY(), pos.getZ());
+		playerIn.openGui(MiruFurniture.instance, MiruFurniture.GUIID_STORAGESHELF, worldIn, pos.getX(), pos.getY(), pos.getZ());
 
 		return true;
 
@@ -77,14 +81,19 @@ public class BlockStorageShelf extends BlockContainer {
 
 
 
-	@Override public int getRenderType() {
-		return 3;
+
+	@Override
+	public EnumBlockRenderType getRenderType(IBlockState state)
+	{
+		return EnumBlockRenderType.MODEL;
 	}
 
 	@Override @SideOnly(Side.CLIENT)
-	public EnumWorldBlockLayer getBlockLayer() {
-		return EnumWorldBlockLayer.CUTOUT_MIPPED;
+	public BlockRenderLayer getBlockLayer()
+	{
+		return BlockRenderLayer.CUTOUT_MIPPED;
 	}
+
 
 
 
@@ -106,22 +115,22 @@ public class BlockStorageShelf extends BlockContainer {
 	}
 
 
-	@Override protected BlockState createBlockState()
+	@Override protected BlockStateContainer createBlockState()
 	{
-		return new BlockState(this, new IProperty[] { FACING }); //, HAS_BOOK[0], HAS_BOOK[1], HAS_BOOK[2]});
+		return new BlockStateContainer(this, new IProperty[] { FACING }); //, HAS_BOOK[0], HAS_BOOK[1], HAS_BOOK[2]});
 	}
 
 	@Override public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityStorageShelf();
 	}
 
-	@Override public boolean isOpaqueCube() { return true; }
+	@Override public boolean isOpaqueCube(IBlockState state) { return true; }
 
-	@Override public boolean isFullCube() { return false; }
+	@Override public boolean isFullCube(IBlockState state) { return false; }
 
-	@Override public boolean isFullBlock() { return false; }
+	@Override public boolean isFullBlock(IBlockState state) { return false; }
 
-	@Override public boolean getUseNeighborBrightness() { return true; }
+	@Override public boolean getUseNeighborBrightness(IBlockState state) { return true; }
 
 
 }

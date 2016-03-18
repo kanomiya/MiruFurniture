@@ -3,12 +3,8 @@ package com.kanomiya.mcmod.mirufurniture.render;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.renderer.texture.TextureCompass;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemSkull;
 import net.minecraft.tileentity.TileEntity;
@@ -52,29 +48,6 @@ public class TileEntityOnetimeGlassCaseRenderer extends IExtendedTileEntitySpeci
 				RenderItem itemRenderer = mc.getRenderItem();
 				Item item = tileCase.getDisplayedItem().getItem();
 
-				TextureAtlasSprite textureatlassprite = null;
-
-				if (item == Items.compass)
-				{
-					textureatlassprite = mc.getTextureMapBlocks().getAtlasSprite(TextureCompass.field_176608_l);
-					mc.getTextureManager().bindTexture(TextureMap.locationBlocksTexture);
-
-					if (textureatlassprite instanceof TextureCompass)
-					{
-						TextureCompass texturecompass = (TextureCompass)textureatlassprite;
-						double d0 = texturecompass.currentAngle;
-						double d1 = texturecompass.angleDelta;
-						texturecompass.currentAngle = 0.0D;
-						texturecompass.angleDelta = 0.0D;
-						texturecompass.updateCompass(tileCase.getWorld(), tileCase.getPos().getX(), tileCase.getPos().getZ(), 0, false, true);
-						texturecompass.currentAngle = d0;
-						texturecompass.angleDelta = d1;
-					}
-					else
-					{
-						textureatlassprite = null;
-					}
-				}
 
 				GlStateManager.translate(0d, 0.4d, 0d);
 				GlStateManager.scale(0.5f, 0.5f, 0.5f);
@@ -88,14 +61,10 @@ public class TileEntityOnetimeGlassCaseRenderer extends IExtendedTileEntitySpeci
 				RenderHelper.enableStandardItemLighting();
 				// itemRenderer.renderItemModel(tileCase.getDisplayedItem());
 				// RenderItemFrame / TileEntityItemStackRenderer
-				itemRenderer.func_181564_a(tileCase.getDisplayedItem(), ItemCameraTransforms.TransformType.FIXED);
+				itemRenderer.renderItem(tileCase.getDisplayedItem(), ItemCameraTransforms.TransformType.FIXED);
 				RenderHelper.disableStandardItemLighting();
 				GlStateManager.popAttrib();
 
-				if (textureatlassprite != null && textureatlassprite.getFrameCount() > 0)
-				{
-					textureatlassprite.updateAnimation();
-				}
 			}
 			GlStateManager.enableLighting();
 

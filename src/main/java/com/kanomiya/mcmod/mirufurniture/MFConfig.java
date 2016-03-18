@@ -2,10 +2,10 @@ package com.kanomiya.mcmod.mirufurniture;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBook;
-import net.minecraft.item.ItemEditableBook;
 import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemWritableBook;
+import net.minecraft.item.ItemWrittenBook;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import com.kanomiya.mcmod.kanomiyacore.KanomiyaCore;
@@ -29,7 +29,7 @@ public class MFConfig {
 
 		Item item = stack.getItem();
 
-		if (item instanceof ItemBook || item instanceof ItemEditableBook || item instanceof ItemWritableBook || item instanceof ItemEnchantedBook) {
+		if (item instanceof ItemBook || item instanceof ItemWritableBook || item instanceof ItemWrittenBook || item instanceof ItemEnchantedBook) {
 			return true;
 		}
 

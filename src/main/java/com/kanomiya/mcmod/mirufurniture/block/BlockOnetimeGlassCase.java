@@ -8,13 +8,15 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Enchantments;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
@@ -22,10 +24,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.EnumWorldBlockLayer;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -67,17 +72,17 @@ public class BlockOnetimeGlassCase extends BlockContainer {
 		setCreativeTab(MiruFurniture.tabMF);
 	}
 
-	@Override public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
-		TileEntity tileEntity = worldIn.getTileEntity(pos);
+	@Override public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+			TileEntity tileEntity = worldIn.getTileEntity(pos);
 
-		if (tileEntity instanceof TileEntityOnetimeGlassCase && playerIn.getHeldItem() != null) {
+		if (tileEntity instanceof TileEntityOnetimeGlassCase && heldItem != null) {
 			TileEntityOnetimeGlassCase tileCase = (TileEntityOnetimeGlassCase) tileEntity;
 
 			boolean successFlag = false;
 			boolean consumedItem = false;
 
 			if (! tileCase.hasDisplayedItem()) {
-				ItemStack displayStack = playerIn.getHeldItem().copy();
+				ItemStack displayStack = heldItem.copy();
 				displayStack.stackSize = 1;
 				tileCase.setDisplayedItem(displayStack);
 
@@ -85,7 +90,7 @@ public class BlockOnetimeGlassCase extends BlockContainer {
 				successFlag = true;
 
 			} else if (state.getValue(BROKEN))  {
-				if (playerIn.getHeldItem().getItem() == Item.getItemFromBlock(Blocks.glass_pane)) {
+				if (heldItem.getItem() == Item.getItemFromBlock(Blocks.glass_pane)) {
 
 					NBTTagCompound tag = new NBTTagCompound();
 					tileEntity.writeToNBT(tag);
@@ -112,7 +117,7 @@ public class BlockOnetimeGlassCase extends BlockContainer {
 	}
 
 	@Override public void onBlockClicked(World worldIn, BlockPos pos, EntityPlayer playerIn) {
-		if (EnchantmentHelper.getSilkTouchModifier(playerIn)) return;
+		if (EnchantmentHelper.getEnchantmentLevel(Enchantments.silkTouch, playerIn.getHeldItemMainhand()) > 0) return;
 
 		IBlockState state = worldIn.getBlockState(pos);
 		TileEntity tileEntity = worldIn.getTileEntity(pos);
@@ -132,9 +137,10 @@ public class BlockOnetimeGlassCase extends BlockContainer {
 
 		}
 
-		if (! (Boolean) state.getValue(BROKEN)) {
+		if (! (Boolean) state.getValue(BROKEN)) { // BlockGlass
 			if (tileEntity instanceof TileEntityOnetimeGlassCase) {
-				worldIn.playSound(pos.getX(), pos.getY(), pos.getZ(), "dig.glass", 1.0f, 1.0f, true);
+				worldIn.playSound(pos.getX() +0.5d, pos.getY() +0.5d, pos.getZ() +0.5d, SoundEvents.block_glass_break, SoundCategory.BLOCKS, 1.0f, 1.0f, false);
+
 
 				int x = (pos.getX() + pos2.getX()) /2;
 				int y = (pos.getY() + pos2.getY()) /2;
@@ -177,11 +183,13 @@ public class BlockOnetimeGlassCase extends BlockContainer {
 
 
 
-	@Override public boolean hasComparatorInputOverride() {
+	@Override  public boolean hasComparatorInputOverride(IBlockState state)
+	{
 		return true;
 	}
 
-	@Override public int getComparatorInputOverride(World worldIn, BlockPos pos) {
+	@Override public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos)
+	{
 		return Container.calcRedstone(worldIn.getTileEntity(pos));
 	}
 
@@ -240,26 +248,27 @@ public class BlockOnetimeGlassCase extends BlockContainer {
 		return getStateFromMeta(meta).withProperty(FACING, placer.getHorizontalFacing().getOpposite());
 	}
 
-	@Override protected BlockState createBlockState()
+	@Override protected BlockStateContainer createBlockState()
 	{
-		return new BlockState(this, new IProperty[] { BROKEN, FACING });
+		return new BlockStateContainer(this, new IProperty[] { BROKEN, FACING });
 	}
 
-	@Override public int getRenderType()
+	@Override
+	public EnumBlockRenderType getRenderType(IBlockState state)
 	{
-		return 3;
+		return EnumBlockRenderType.MODEL;
 	}
 
 	@Override @SideOnly(Side.CLIENT)
-	public EnumWorldBlockLayer getBlockLayer()
+	public BlockRenderLayer getBlockLayer()
 	{
-		return EnumWorldBlockLayer.CUTOUT_MIPPED;
+		return BlockRenderLayer.CUTOUT_MIPPED;
 	}
 
-	@Override public boolean isOpaqueCube() { return false; }
-	@Override public boolean isFullCube() { return false; }
-	@Override public boolean isFullBlock() { return false; }
-	@Override public boolean getUseNeighborBrightness() { return true; }
+	@Override public boolean isOpaqueCube(IBlockState state) { return false; }
+	@Override public boolean isFullCube(IBlockState state) { return false; }
+	@Override public boolean isFullBlock(IBlockState state) { return false; }
+	@Override public boolean getUseNeighborBrightness(IBlockState state) { return true; }
 
 
 }

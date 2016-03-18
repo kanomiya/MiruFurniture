@@ -16,9 +16,9 @@ import org.apache.logging.log4j.Logger;
 import com.kanomiya.mcmod.kanomiyacore.KanomiyaCore;
 import com.kanomiya.mcmod.mirufurniture.gui.GuiHandler;
 
-@Mod(modid = MiruFurniture.MODID, acceptedMinecraftVersions = "[1.8,1.8.8]")
+@Mod(modid = MiruFurniture.MODID)
 public class MiruFurniture {
-	public static final String MODID = "mirufurniture";
+	public static final String MODID = "mirufurniture"; // BlockPumpkin
 
 	@Mod.Instance(MODID)
 	public static MiruFurniture instance;

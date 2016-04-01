@@ -262,7 +262,7 @@ public class BlockOnetimeGlassCase extends BlockContainer {
 	@Override @SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer()
 	{
-		return BlockRenderLayer.CUTOUT_MIPPED;
+		return BlockRenderLayer.CUTOUT;
 	}
 
 	@Override public boolean isOpaqueCube(IBlockState state) { return false; }

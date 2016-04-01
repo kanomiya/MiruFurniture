@@ -91,7 +91,7 @@ public class BlockStorageShelf extends BlockContainer {
 	@Override @SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer()
 	{
-		return BlockRenderLayer.CUTOUT_MIPPED;
+		return BlockRenderLayer.CUTOUT;
 	}
 
 

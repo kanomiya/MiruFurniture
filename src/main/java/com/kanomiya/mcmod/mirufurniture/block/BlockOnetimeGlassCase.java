@@ -64,7 +64,7 @@ public class BlockOnetimeGlassCase extends BlockContainer {
 
 
 	public BlockOnetimeGlassCase() {
-		super(Material.rock);
+		super(Material.ROCK);
 
 		setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(BROKEN, Boolean.FALSE));
 		setHardness(1.25f);
@@ -90,7 +90,7 @@ public class BlockOnetimeGlassCase extends BlockContainer {
 				successFlag = true;
 
 			} else if (state.getValue(BROKEN))  {
-				if (heldItem.getItem() == Item.getItemFromBlock(Blocks.glass_pane)) {
+				if (heldItem.getItem() == Item.getItemFromBlock(Blocks.GLASS_PANE)) {
 
 					NBTTagCompound tag = new NBTTagCompound();
 					tileEntity.writeToNBT(tag);
@@ -117,7 +117,7 @@ public class BlockOnetimeGlassCase extends BlockContainer {
 	}
 
 	@Override public void onBlockClicked(World worldIn, BlockPos pos, EntityPlayer playerIn) {
-		if (EnchantmentHelper.getEnchantmentLevel(Enchantments.silkTouch, playerIn.getHeldItemMainhand()) > 0) return;
+		if (EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, playerIn.getHeldItemMainhand()) > 0) return;
 
 		IBlockState state = worldIn.getBlockState(pos);
 		TileEntity tileEntity = worldIn.getTileEntity(pos);
@@ -139,13 +139,13 @@ public class BlockOnetimeGlassCase extends BlockContainer {
 
 		if (! (Boolean) state.getValue(BROKEN)) { // BlockGlass
 			if (tileEntity instanceof TileEntityOnetimeGlassCase) {
-				worldIn.playSound(pos.getX() +0.5d, pos.getY() +0.5d, pos.getZ() +0.5d, SoundEvents.block_glass_break, SoundCategory.BLOCKS, 1.0f, 1.0f, false);
+				worldIn.playSound(pos.getX() +0.5d, pos.getY() +0.5d, pos.getZ() +0.5d, SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 1.0f, 1.0f, false);
 
 
 				int x = (pos.getX() + pos2.getX()) /2;
 				int y = (pos.getY() + pos2.getY()) /2;
 				int z = (pos.getZ() + pos2.getZ()) /2;
-				int[] ix = new int[] { Block.getStateId(Blocks.glass_pane.getDefaultState()) };
+				int[] ix = new int[] { Block.getStateId(Blocks.GLASS_PANE.getDefaultState()) };
 
 				worldIn.spawnParticle(EnumParticleTypes.BLOCK_CRACK, x, y, z, 3.5d, 3.5d, 3.5d, ix);
 				worldIn.spawnParticle(EnumParticleTypes.BLOCK_CRACK, x, y, z, 3.5d, 3.5d, 3.5d, ix);

@@ -29,11 +29,11 @@ public class BlockStorageShelf extends BlockContainer {
 	public static final PropertyDirection FACING = PropertyDirection.create(MFBlockConsts.NAME_FACING, EnumFacing.Plane.HORIZONTAL);
 
 	public BlockStorageShelf() {
-		super(Material.wood);
+		super(Material.WOOD);
 		setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 
 		setHardness(1.5F);
-		setStepSound(SoundType.WOOD);
+		setSoundType(SoundType.WOOD);
 		setCreativeTab(MiruFurniture.tabMF);
 
 	}

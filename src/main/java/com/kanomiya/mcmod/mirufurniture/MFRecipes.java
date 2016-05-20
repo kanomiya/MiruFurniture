@@ -21,43 +21,43 @@ public class MFRecipes {
 				"CCC",
 				"C C",
 				"CCC",
-				'C',Blocks.hardened_clay
+				'C',Blocks.HARDENED_CLAY
 		);
 
 		GameRegistry.addRecipe(new ItemStack(MFBlocks.blockOnetimeGlassCase_cube),
 				"CCC",
 				"C C",
 				"CCC",
-				'C',Blocks.stained_hardened_clay
+				'C',Blocks.STAINED_HARDENED_CLAY
 		);
 
 		GameRegistry.addRecipe(new ItemStack(MFBlocks.blockOnetimeGlassCase_cube),
 				"CCC",
 				"CGC",
 				"CCC",
-				'C',Blocks.hardened_clay,
-				'G',Blocks.glass_pane
+				'C',Blocks.HARDENED_CLAY,
+				'G',Blocks.GLASS_PANE
 		);
 
 		GameRegistry.addRecipe(new ItemStack(MFBlocks.blockOnetimeGlassCase_cube),
 				"CCC",
 				"CGC",
 				"CCC",
-				'C',Blocks.stained_hardened_clay,
-				'G',Blocks.glass_pane
+				'C',Blocks.STAINED_HARDENED_CLAY,
+				'G',Blocks.GLASS_PANE
 		);
 
 		GameRegistry.addShapelessRecipe(new ItemStack(MFBlocks.blockOnetimeGlassCase_cube, 1, 0),
 				new ItemStack(MFBlocks.blockOnetimeGlassCase_cube, 1, 1),
-				Blocks.glass_pane
+				Blocks.GLASS_PANE
 		);
 
 		GameRegistry.addRecipe(new ItemStack(MFBlocks.blockStorageShelf),
 				"PPP",
 				"HHH",
 				"PPP",
-				'P',Blocks.planks,
-				'H',Blocks.wooden_slab
+				'P',Blocks.PLANKS,
+				'H',Blocks.WOODEN_SLAB
 		);
 
 	}

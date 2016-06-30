@@ -1,24 +1,28 @@
 package com.kanomiya.mcmod.mirufurniture;
 
+import org.apache.logging.log4j.Logger;
+
+import com.kanomiya.mcmod.mirufurniture.gui.GuiHandler;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import org.apache.logging.log4j.Logger;
-
-import com.kanomiya.mcmod.kanomiyacore.KanomiyaCore;
-import com.kanomiya.mcmod.mirufurniture.gui.GuiHandler;
-
-@Mod(modid = MiruFurniture.MODID)
+/**
+ * Modクラス
+ *
+ * @author Kanomiya [2016]
+ *
+ */
+@Mod(modid = MiruFurniture.MODID, name = "Miru Furniture", version = "@VERSION@")
 public class MiruFurniture {
-	public static final String MODID = "mirufurniture"; // BlockPumpkin
+	public static final String MODID = "com.kanomiya.mcmod.mirufurniture";
 
 	@Mod.Instance(MODID)
 	public static MiruFurniture instance;
@@ -34,33 +38,20 @@ public class MiruFurniture {
 
 	public static Logger logger;
 
-	public static KanomiyaCore core;
-
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		logger = event.getModLog();
-		core = new KanomiyaCore(MODID, instance);
 
-		MFBlocks.preInit(event, core);
-		MFRecipes.preInit(event, core);
-		MFConfig.preInit(event, core);
+		MFBlocks.preInit(event);
+		MFRecipes.preInit(event);
 
 		// MinecraftForge.EVENT_BUS.register(this);
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		MFBlocks.init(event, core);
-		MFRecipes.init(event, core);
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
-
-	}
-
-	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
-		MFBlocks.postInit(event, core);
-		MFRecipes.postInit(event, core);
 
 	}
 

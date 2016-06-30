@@ -1,5 +1,5 @@
 {
-	"parent": "mirufurniture:block/blockOnetimeGlassCase_cube_broken",
+	"parent": "com.kanomiya.mcmod.mirufurniture:block/blockOnetimeGlassCase_cube_broken",
 	"display": {
 		"ground": {
 			"rotation": [ 0, 45, 0 ],

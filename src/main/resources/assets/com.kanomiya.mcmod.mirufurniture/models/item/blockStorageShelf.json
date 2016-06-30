@@ -1,5 +1,5 @@
 {
-	"parent": "mirufurniture:block/blockOnetimeGlassCase_cube",
+	"parent": "com.kanomiya.mcmod.mirufurniture:block/blockStorageShelf",
 	"display": {
 		"ground": {
 			"rotation": [ 0, 45, 0 ],

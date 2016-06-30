@@ -1,21 +1,13 @@
 [
 {
-	"modinfoversion": 2,
-	"modid": "mirufurniture",
-	"name": "Miru Furniture",
-	"description": "家具を追加するMod / The Mod adding some pieces of furniture",
-	"version": "0.1.1",
-	"mcversion": "1.9",
-	"url": "http://kanomiya.com/",
-	"updateUrl": "",
-	"authorList": ["Kanomiya"],
-	"credits": "",
-	"logoFile": "",
-	"screenshots": [],
-	"parent": "",
-	"requiredMods": ["kanomiyacore"],
-	"dependencies": [],
-	"dependants": [],
-	"useDependencyInformation": "true"
+  "modid": "com.kanomiya.mcmod.mirufurniture",
+  "name": "Miru Furniture",
+  "description": "家具を追加するMod / The Mod adding some pieces of furniture",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://github.com/kanomiya/MiruFurniture",
+  "authorList": ["Kanomiya"],
+  "requiredMods": ["com.kanomiya.mcmod.kanomiyacore"],
+  "useDependencyInformation": "true"
 }
 ]

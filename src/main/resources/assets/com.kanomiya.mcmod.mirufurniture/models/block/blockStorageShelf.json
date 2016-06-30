@@ -1,7 +1,7 @@
 {
 	"__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
 	"textures": {
-		"front": "mirufurniture:blocks/blockStorageShelf_front",
+		"front": "com.kanomiya.mcmod.mirufurniture:blocks/blockStorageShelf_front",
 		"base": "blocks/planks_oak",
 		"particle": "blocks/planks_oak"
 	},

@@ -3,12 +3,8 @@ package com.kanomiya.mcmod.mirufurniture;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-
-import com.kanomiya.mcmod.kanomiyacore.KanomiyaCore;
 
 /**
  * @author Kanomiya
@@ -16,7 +12,7 @@ import com.kanomiya.mcmod.kanomiyacore.KanomiyaCore;
  */
 public class MFRecipes {
 
-	public static void preInit(FMLPreInitializationEvent event, KanomiyaCore core) {
+	public static void preInit(FMLPreInitializationEvent event) {
 		GameRegistry.addRecipe(new ItemStack(MFBlocks.blockOnetimeGlassCase_cube),
 				"CCC",
 				"C C",
@@ -61,9 +57,6 @@ public class MFRecipes {
 		);
 
 	}
-
-	public static void init(FMLInitializationEvent event, KanomiyaCore core) {  }
-	public static void postInit(FMLPostInitializationEvent event, KanomiyaCore core) {  }
 
 
 }

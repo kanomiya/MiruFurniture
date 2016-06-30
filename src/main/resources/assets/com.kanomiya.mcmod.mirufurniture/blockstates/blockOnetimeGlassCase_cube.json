@@ -1,0 +1,12 @@
+{
+	"variants": {
+		"broken=false,facing=north": { "model": "com.kanomiya.mcmod.mirufurniture:blockOnetimeGlassCase_cube" },
+		"broken=false,facing=south": { "model": "com.kanomiya.mcmod.mirufurniture:blockOnetimeGlassCase_cube", "y": 180 },
+		"broken=false,facing=west":  { "model": "com.kanomiya.mcmod.mirufurniture:blockOnetimeGlassCase_cube", "y": 270 },
+		"broken=false,facing=east":  { "model": "com.kanomiya.mcmod.mirufurniture:blockOnetimeGlassCase_cube", "y": 90 },
+		"broken=true,facing=north": { "model": "com.kanomiya.mcmod.mirufurniture:blockOnetimeGlassCase_cube_broken" },
+		"broken=true,facing=south": { "model": "com.kanomiya.mcmod.mirufurniture:blockOnetimeGlassCase_cube_broken", "y": 180 },
+		"broken=true,facing=west":  { "model": "com.kanomiya.mcmod.mirufurniture:blockOnetimeGlassCase_cube_broken", "y": 270 },
+		"broken=true,facing=east":  { "model": "com.kanomiya.mcmod.mirufurniture:blockOnetimeGlassCase_cube_broken", "y": 90 }
+	}
+}

@@ -1,5 +1,8 @@
 package com.kanomiya.mcmod.mirufurniture.block;
 
+import com.kanomiya.mcmod.mirufurniture.MiruFurniture;
+import com.kanomiya.mcmod.mirufurniture.tileentity.TileEntityStorageShelf;
+
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -22,9 +25,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.kanomiya.mcmod.mirufurniture.MiruFurniture;
-import com.kanomiya.mcmod.mirufurniture.tileentity.TileEntityStorageShelf;
-
 public class BlockStorageShelf extends BlockContainer {
 	public static final PropertyDirection FACING = PropertyDirection.create(MFBlockConsts.NAME_FACING, EnumFacing.Plane.HORIZONTAL);
 
@@ -35,6 +35,7 @@ public class BlockStorageShelf extends BlockContainer {
 		setHardness(1.5F);
 		setSoundType(SoundType.WOOD);
 		setCreativeTab(MiruFurniture.tabMF);
+        setUnlocalizedName("blockStorageShelf");
 
 	}
 

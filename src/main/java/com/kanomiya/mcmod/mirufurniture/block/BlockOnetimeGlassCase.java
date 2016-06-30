@@ -2,6 +2,11 @@ package com.kanomiya.mcmod.mirufurniture.block;
 
 import java.util.List;
 
+import com.kanomiya.mcmod.kanomiyacore.util.bit.BitFieldHelper;
+import com.kanomiya.mcmod.kanomiyacore.util.bit.BitFieldStructure;
+import com.kanomiya.mcmod.mirufurniture.MiruFurniture;
+import com.kanomiya.mcmod.mirufurniture.tileentity.TileEntityOnetimeGlassCase;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -35,11 +40,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.kanomiya.mcmod.kanomiyacore.util.bit.BitFieldHelper;
-import com.kanomiya.mcmod.kanomiyacore.util.bit.BitFieldStructure;
-import com.kanomiya.mcmod.mirufurniture.MiruFurniture;
-import com.kanomiya.mcmod.mirufurniture.tileentity.TileEntityOnetimeGlassCase;
-
 /**
  * @author Kanomiya
  *
@@ -70,6 +70,7 @@ public class BlockOnetimeGlassCase extends BlockContainer {
 		setHardness(1.25f);
 		setResistance(7.0f);
 		setCreativeTab(MiruFurniture.tabMF);
+		setUnlocalizedName("blockOnetimeGlassCase_cube");
 	}
 
 	@Override public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
@@ -214,7 +215,7 @@ public class BlockOnetimeGlassCase extends BlockContainer {
 	}
 
 	@Override @SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item itemIn, CreativeTabs tab, List list) {
+	public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> list) {
 		list.add(new ItemStack(itemIn, 1, 0));
 		list.add(new ItemStack(itemIn, 1, 1));
 	}

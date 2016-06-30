@@ -1,8 +1,0 @@
-{
-	"variants": {
-		"facing=north": { "model": "mirufurniture:blockStorageShelf" },
-		"facing=south": { "model": "mirufurniture:blockStorageShelf", "y": 180 },
-		"facing=west":  { "model": "mirufurniture:blockStorageShelf", "y": 270 },
-		"facing=east":  { "model": "mirufurniture:blockStorageShelf", "y": 90 }
-	}
-}

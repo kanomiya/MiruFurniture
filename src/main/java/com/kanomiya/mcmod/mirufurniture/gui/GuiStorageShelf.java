@@ -1,17 +1,17 @@
 package com.kanomiya.mcmod.mirufurniture.gui;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.translation.I18n;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
 import org.lwjgl.opengl.GL11;
 
 import com.kanomiya.mcmod.mirufurniture.MiruFurniture;
 import com.kanomiya.mcmod.mirufurniture.inventory.ContainerStorageShelf;
 import com.kanomiya.mcmod.mirufurniture.tileentity.TileEntityStorageShelf;
+
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 
 @SideOnly(Side.CLIENT)
@@ -28,7 +28,7 @@ public class GuiStorageShelf extends GuiContainer {
 
 		fontRendererObj.drawString("Bookshelf", 8, 6, 4210752);
 		//draws "Inventory" or your regional equivalent
-		fontRendererObj.drawString(I18n.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 4210752);
+		fontRendererObj.drawString(I18n.format("container.inventory"), 8, ySize - 96 + 2, 4210752);
 	}
 
 	@Override

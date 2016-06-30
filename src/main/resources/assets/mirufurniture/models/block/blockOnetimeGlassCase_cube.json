@@ -1,7 +1,0 @@
-{
-	"parent": "mirufurniture:block/blockGlassCase_cube",
-	"textures": {
-		"base": "mirufurniture:blocks/blockOnetimeGlassCase",
-		"glass": "mirufurniture:blocks/blockOnetimeGlassCase_glass"
-	}
-}

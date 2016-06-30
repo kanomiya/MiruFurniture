@@ -1,0 +1,7 @@
+{
+	"parent": "com.kanomiya.mcmod.mirufurniture:block/blockGlassCase_cube_broken",
+	"textures": {
+		"base": "com.kanomiya.mcmod.mirufurniture:blocks/blockOnetimeGlassCase",
+		"glass": "com.kanomiya.mcmod.mirufurniture:blocks/blockOnetimeGlassCase_glass"
+	}
+}

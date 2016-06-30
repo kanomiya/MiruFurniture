@@ -1,0 +1,8 @@
+{
+	"variants": {
+		"facing=north": { "model": "com.kanomiya.mcmod.mirufurniture:blockStorageShelf" },
+		"facing=south": { "model": "com.kanomiya.mcmod.mirufurniture:blockStorageShelf", "y": 180 },
+		"facing=west":  { "model": "com.kanomiya.mcmod.mirufurniture:blockStorageShelf", "y": 270 },
+		"facing=east":  { "model": "com.kanomiya.mcmod.mirufurniture:blockStorageShelf", "y": 90 }
+	}
+}

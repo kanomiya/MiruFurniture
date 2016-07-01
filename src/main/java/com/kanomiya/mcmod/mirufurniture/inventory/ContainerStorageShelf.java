@@ -19,8 +19,6 @@ public class ContainerStorageShelf extends Container {
 	public ContainerStorageShelf(InventoryPlayer inventoryPlayer, TileEntityStorageShelf te) {
 		tileEntity = te;
 
-		//the Slot constructor takes the IInventory and the slot number in that it binds to
-		//and the x-y coordinates it resides on-screen
 		for (int i = 0; i < 2; ++i) {
 			for (int j = 0; j < 7; ++j) {
 				addSlotToContainer(new FixedSlot(tileEntity, slotNum, 24 + j * 18, 30 + i * 18));
@@ -28,7 +26,6 @@ public class ContainerStorageShelf extends Container {
 			}
 		}
 
-		//commonly used vanilla code that adds the player's inventory
 		bindPlayerInventory(inventoryPlayer);
 
 		tileEntity.openInventory(inventoryPlayer.player);
@@ -58,9 +55,9 @@ public class ContainerStorageShelf extends Container {
 	 */
 	@Override public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int slotNum) {
 		ItemStack stack = null;
-		Slot slot = (Slot) inventorySlots.get(slotNum);
+		Slot slot = inventorySlots.get(slotNum);
 
-		if (slot == null || ! slot.getHasStack()) { return stack; }
+		if (slot == null || ! slot.getHasStack()) return stack;
 
 		ItemStack slotStack = slot.getStack();
 		stack = slotStack.copy();
@@ -74,15 +71,15 @@ public class ContainerStorageShelf extends Container {
 		}
 		else if(MFConfig.isBookItem(slotStack))
 		{
-			slotStack.stackSize --;
-			if (slotStack.stackSize == 0) slot.putStack((ItemStack) null);
-
 			for (int i=0, i_=tileEntity.getSizeInventory(); i<i_; i++) {
 				ItemStack target = tileEntity.getStackInSlot(i);
 
 				if (target == null) {
 					stack.stackSize = 1;
 					tileEntity.setInventorySlotContents(i, stack);
+
+		            slotStack.stackSize --;
+		            if (slotStack.stackSize == 0) slot.putStack((ItemStack) null);
 
 					return slotStack;
 				}
@@ -102,49 +99,6 @@ public class ContainerStorageShelf extends Container {
 		return stack;
 	}
 
-
-
-	/*
-	// Modified Version - Only merges for 1 stack
-	@Override
-	protected boolean mergeItemStack(ItemStack par1ItemStack, int startSlot, int endSlot, boolean reverse) {
-		boolean success = false;
-		int thisStartSlot;
-
-		Slot currentSlot;
-		ItemStack currentStack;
-
-		if (par1ItemStack.stackSize > 0) {
-			if (reverse) {
-				thisStartSlot = endSlot - 1;
-			} else {
-				thisStartSlot = startSlot;
-			}
-
-			while (!reverse && thisStartSlot < endSlot || reverse && thisStartSlot >= startSlot) {
-				currentSlot = (Slot) inventorySlots.get(thisStartSlot);
-				currentStack = currentSlot.getStack();
-
-				if (currentStack == null) {
-					currentSlot.putStack(par1ItemStack.copy());
-					currentSlot.getStack().stackSize = 1;
-					currentSlot.onSlotChanged();
-					par1ItemStack.stackSize -= 1;
-					success = true;
-					break;
-				}
-
-				if (reverse) {
-					--thisStartSlot;
-				} else {
-					++thisStartSlot;
-				}
-			}
-		}
-
-		return success;
-	}
-	*/
 
 	@Override
 	public void onContainerClosed(EntityPlayer p_75134_1_) {
